@@ -13,25 +13,23 @@ The answer and all the intermediate calculations can be represented in a 32-bit 
 
 class Solution {
     public int evalRPN(String[] tokens) {
-        Stack<Integer> st = new Stack<>() ;
-        Set<String> set = new HashSet<>(Arrays.asList("+", "-", "*", "/")) ;
-        for (String i:tokens) 
-        {
-            if(!set.contains(i)) 
+        Stack<Integer> st = new Stack<>();
+        Set<String> set = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
+        for (String i : tokens) {
+            if (!set.contains(i))
                 st.push(Integer.valueOf(i));
-            else 
-            {
+            else {
                 int a = st.pop(), b = st.pop();
-                if(i.equals("+")) 
+                if (i.equals("+"))
                     st.push(a + b);
-                else if(i.equals("-")) 
+                else if (i.equals("-"))
                     st.push(b - a);
-                else if(i.equals("*")) 
-                    st.push(a*b);
-                else 
-                    st.push(b/a);
+                else if (i.equals("*"))
+                    st.push(a * b);
+                else
+                    st.push(b / a);
             }
         }
-        return st.peek() ;
+        return st.peek();
     }
 }
